@@ -1,18 +1,20 @@
-# node-wxpay
+# node-wxpay3
 
 [普通商户接入文档](https://pay.weixin.qq.com/wiki/doc/api/index.html)
 
 ## 前言
 本模块集成了大部分微信支付、提现等模块的接口，采用async、await的方式调用，使用者不用在考虑参数加密发送，秘钥发送方式、xml怎么解析、json怎么转成xml等一系列麻烦事。 
+## 安装
+npm i node-wxpay3 --save
 
 ## 使用
 1. 支付产品 
 此模块集成了付款码支付、jsapi、小程序支付、native、app、h5支付
 同时也包括了退款 订单查询等
-详细使用看 `docs/pay.md`
+[查看详细使用](https://github.com/wjc49420645/node-wxpay/blob/master/docs/pay.md)
 
 ```bash
-const { WxPay } = require('../index');
+const { WxPay } = require('node-wxpay3');
 const fs = require('fs');
 const wxpay = new WxPay({
     'appid': 'appid',
@@ -42,9 +44,10 @@ const chance = require('chance')();
 2. 支付工具
 
 此模块集成了优惠券发放、红包、提现到零钱、提现到银行卡
-详细使用看 `docs/withdraw.md`
+[查看详细使用](https://github.com/wjc49420645/node-wxpay/blob/master/docs/withdraw.md)
+
 ```bash
-const { WxWithdraw } = require('../index');
+const { WxWithdraw } = require('node-wxpay3');
 const fs = require('fs');
 const chance = require('chance')();
 
