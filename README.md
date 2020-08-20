@@ -11,6 +11,7 @@ npm i node-wxpay3 --save
 1. 支付产品 
 此模块集成了付款码支付、jsapi、小程序支付、native、app、h5支付
 同时也包括了退款 订单查询等
+
 [查看详细使用](https://github.com/wjc49420645/node-wxpay/blob/master/docs/pay.md)
 
 ```bash
@@ -44,6 +45,7 @@ const chance = require('chance')();
 2. 支付工具
 
 此模块集成了优惠券发放、红包、提现到零钱、提现到银行卡
+
 [查看详细使用](https://github.com/wjc49420645/node-wxpay/blob/master/docs/withdraw.md)
 
 ```bash
