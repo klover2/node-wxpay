@@ -1,5 +1,5 @@
 # node-wxpay3
-
+(支付文档v2)
 [普通商户接入文档](https://pay.weixin.qq.com/wiki/doc/api/index.html)
 
 ## 前言

@@ -1,6 +1,6 @@
 {
   "name": "node-wxpay3",
-  "version": "1.0.1",
+  "version": "1.0.4",
   "description": "微信支付、提现、优惠券、红包等",
   "main": "index.js",
   "scripts": {
@@ -28,8 +28,8 @@
     "eslint-config-egg": "^7.4.1",
     "md5": "^2.3.0",
     "node-rsa": "^1.1.1",
-    "urlencode": "^1.1.0",
     "superagent": "^6.0.0",
+    "urlencode": "^1.1.0",
     "xml2js": "^0.4.19"
   },
   "devDependencies": {
