@@ -16,21 +16,43 @@
 
         let result = await wxpay.unifiedorder(options);
 返回：
-        // {
-        //     appid: '',
-        //     timestamp: '1597820333',
-        //     partnerid: '',
-        //     prepayid: '',
-        //     package: 'Sign=WXPay',
-        //     noncestr: '6011c3d0c5bb1f7d3610',
-        //     sign: '',
-        //     return_code: 'SUCCESS',
-        //     return_msg: 'OK',
-        //     result_code: 'SUCCESS'
-        //   }
+  {
+    'req_data': { // req_data 是创建订单的参数， 用于回调检验 不要返给前端 自己保留
+        'nonce_str': '1111',
+        'body': 'app支付测试',
+        'out_trade_no': '36e306e2f2ca70196152',
+        'total_fee': 1,
+        'spbill_create_ip': 'ip',
+        'notify_url': '回调地址',
+        'trade_type': 'APP',
+        'appid': 'appid',
+        'mch_id': '商户id',
+        'sign_type': 'MD5',
+    },
+    'appid': 'appid',
+    'timestamp': '1597973115',
+    'partnerid': '',
+    'prepayid': 'wx21092516083844351bbe681e84561f0000',
+    'package': 'Sign=WXPay',
+    'noncestr': '8a16f1b3c827dc91bb41',
+    'sign': '',
+    'return_code': 'SUCCESS',
+    'return_msg': 'OK',
+    'result_code': 'SUCCESS',
+};
+```
+2. [回调验证](https://pay.weixin.qq.com/wiki/doc/api/jsapi.php?chapter=9_7&index=8)
+```bash
+通知url必须为直接可访问的url，不能携带参数。示例：notify_url：“https://pay.weixin.qq.com/wxpay/pay.action”
+
+由于微信返回是一段xml
+let json = wxapp.xmltojson(微信返回参数)
+let result = wxpay.callback_check(json.sign, req_data) // req_data 在创建统一接口中有返回
+====》 result = true 则校验成功
+
 ```
 
-2. [查询订单](https://pay.weixin.qq.com/wiki/doc/api/jsapi.php?chapter=9_2)
+3. [查询订单](https://pay.weixin.qq.com/wiki/doc/api/jsapi.php?chapter=9_2)
 ```bash
 let result = await wxpay.orderquery({
             'out_trade_no': 'b2e19799f934259f68e5',
@@ -43,14 +65,14 @@ let result = await wxpay.orderquery({
         
 ```
 
-3. [关闭订单](https://pay.weixin.qq.com/wiki/doc/api/jsapi.php?chapter=9_3)
+4. [关闭订单](https://pay.weixin.qq.com/wiki/doc/api/jsapi.php?chapter=9_3)
 ```bash
  let result = await wxpay.closeorder({
             'out_trade_no': '027ee8c8666b9b7f3b6b',
         });
 ```
 
-4. [申请退款](https://pay.weixin.qq.com/wiki/doc/api/jsapi.php?chapter=9_4)
+5. [申请退款](https://pay.weixin.qq.com/wiki/doc/api/jsapi.php?chapter=9_4)
 ```bash
  let result = await wxpay.refund({
             'out_trade_no': 'b2e19799f934259f68e5',
@@ -60,7 +82,7 @@ let result = await wxpay.orderquery({
         });
 ```
 
-5. [查询退款](https://pay.weixin.qq.com/wiki/doc/api/jsapi.php?chapter=9_5)
+6. [查询退款](https://pay.weixin.qq.com/wiki/doc/api/jsapi.php?chapter=9_5)
 ```bash
 let result = await wxpay.refundquery({
             // 'out_trade_no': 'b2e19799f934259f68e5',
@@ -68,7 +90,7 @@ let result = await wxpay.refundquery({
         });
 ```
 
-6. [下载交易账单](https://pay.weixin.qq.com/wiki/doc/api/jsapi.php?chapter=9_6)
+7. [下载交易账单](https://pay.weixin.qq.com/wiki/doc/api/jsapi.php?chapter=9_6)
 ```bash
  let result = await wxpay.downloadbill({
             'bill_date': moment().subtract(2, 'days').format('YYYYMMDD'), //
@@ -91,7 +113,7 @@ let result = await wxpay.refundquery({
         //   }
 ```
 
-7. [下载资金账单](https://pay.weixin.qq.com/wiki/doc/api/jsapi.php?chapter=9_18&index=7)
+8. [下载资金账单](https://pay.weixin.qq.com/wiki/doc/api/jsapi.php?chapter=9_18&index=7)
 ```bash
  let result = await wxpay.downloadfundflow({
             'bill_date': moment().format('YYYYMMDD'), //
@@ -102,7 +124,7 @@ let result = await wxpay.refundquery({
         //和下载交易账单一样
 ```
 
-8. [交易保障](https://pay.weixin.qq.com/wiki/doc/api/jsapi.php?chapter=9_8&index=9)
+9. [交易保障](https://pay.weixin.qq.com/wiki/doc/api/jsapi.php?chapter=9_8&index=9)
 ```bash
 let result = await wxpay.report({
             'interface_url': 'https://api.mch.weixin.qq.com/pay/unifiedorder',
@@ -113,7 +135,7 @@ let result = await wxpay.report({
         });
 ```
 
-9. [拉取订单评价数据](https://pay.weixin.qq.com/wiki/doc/api/jsapi.php?chapter=9_17&index=11)
+10. [拉取订单评价数据](https://pay.weixin.qq.com/wiki/doc/api/jsapi.php?chapter=9_17&index=11)
 ```bash
  let result = await wxpay.batchquerycomment({
             'sign_type': 'HMAC-SHA256',// 只允许HMAC-SHA256加密
@@ -133,7 +155,7 @@ let result = await wxpay.report({
         //   }
 ```
 
-10. [付款码支付](https://pay.weixin.qq.com/wiki/doc/api/micropay.php?chapter=9_10&index=1)
+11. [付款码支付](https://pay.weixin.qq.com/wiki/doc/api/micropay.php?chapter=9_10&index=1)
 ```bash
  const options = {
             'body': '付款码测试',
@@ -147,7 +169,7 @@ let result = await wxpay.report({
         const result = await wxpay.micropay(options);
 ```
 
-11. [撤销订单](https://pay.weixin.qq.com/wiki/doc/api/micropay.php?chapter=9_11&index=3)
+12. [撤销订单](https://pay.weixin.qq.com/wiki/doc/api/micropay.php?chapter=9_11&index=3)
 ```bash
 // (只支持付款码支付的订单才可以撤销，统一下单生成的订单不能撤销)
  const result = await wxpay.reverse({
@@ -155,7 +177,7 @@ let result = await wxpay.report({
         });
         console.log(result);
 ```
-12. [付款码查询openid](https://pay.weixin.qq.com/wiki/doc/api/micropay.php?chapter=9_13&index=9)
+13. [付款码查询openid](https://pay.weixin.qq.com/wiki/doc/api/micropay.php?chapter=9_13&index=9)
 ```bash
  const result = await wxpay.authcodetoopenid({
             'auth_code': '13564556465464',
