@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/wjc49420645/node-wxpay.git"
+    "url": "git+https://github.com/klover2/node-wxpay.git"
   },
   "keywords": [
     "wxpay",
@@ -20,9 +20,9 @@
   "author": "klover",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/wjc49420645/node-wxpay/issues"
+    "url": "https://github.com/klover2/node-wxpay/issues"
   },
-  "homepage": "https://github.com/wjc49420645/node-wxpay#readme",
+  "homepage": "https://github.com/klover2/node-wxpay#readme",
   "dependencies": {
     "chance": "^1.1.6",
     "eslint-config-egg": "^7.4.1",
