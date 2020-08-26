@@ -6,7 +6,7 @@
 ```bash
   const options = {
             'body': 'app支付测试',
-            'out_trade_no': chance.hash({ 'length': 20 }),
+            'out_trade_no': util.getNonceStr(),
             'total_fee': 1,
             'spbill_create_ip': 'ip',
             'notify_url': '回调地址',
@@ -76,7 +76,7 @@ let result = await wxpay.orderquery({
 ```bash
  let result = await wxpay.refund({
             'out_trade_no': 'b2e19799f934259f68e5',
-            'out_refund_no': chance.hash({ 'length': 20 }),
+            'out_refund_no': util.getNonceStr(),
             'total_fee': 1,
             'refund_fee': 1,
         });
@@ -159,7 +159,7 @@ let result = await wxpay.report({
 ```bash
  const options = {
             'body': '付款码测试',
-            'out_trade_no': chance.hash({ 'length': 20 }),
+            'out_trade_no': util.getNonceStr(),
             'total_fee': 1,
             'spbill_create_ip': 'ip',
             'auth_code': '13412341234123412',

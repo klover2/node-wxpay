@@ -23,13 +23,13 @@ const wxpay = new WxPay({
     'partner_key': '', // partner_key为商户平台设置的密钥key
     'pfx': fs.readFileSync('./apiclient_cert.p12'), // 证书
 });
-const chance = require('chance')();
+const util = require('../utils/util');;
 
 (async () => {
     // 创建支付
     const options = {
         'body': 'app支付测试',
-        'out_trade_no': chance.hash({ 'length': 20 }),
+        'out_trade_no': util.getNonceStr(),
         'total_fee': 1,
         'spbill_create_ip': 'ip',
         'notify_url': '回调地址', // 微信会发通知到你服务器上的接口路径
@@ -51,7 +51,7 @@ const chance = require('chance')();
 ```bash
 const { WxWithdraw } = require('node-wxpay3');
 const fs = require('fs');
-const chance = require('chance')();
+const util = require('../utils/util');;
 
 const wxwithdeaw = new WxWithdraw({
     'partner_key': '', // key为商户平台设置的密钥key
@@ -60,7 +60,7 @@ const wxwithdeaw = new WxWithdraw({
 
 (async () => {
     const options = {
-        'mch_billno': chance.hash({ 'length': 20 }),
+        'mch_billno': util.getNonceStr(),
         'mch_id': '商户id',
         'wxappid': 'appid',
         'send_name': '发送红包测试',

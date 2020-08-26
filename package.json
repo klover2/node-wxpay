@@ -24,7 +24,6 @@
   },
   "homepage": "https://github.com/klover2/node-wxpay#readme",
   "dependencies": {
-    "chance": "^1.1.6",
     "eslint-config-egg": "^7.4.1",
     "md5": "^2.3.0",
     "node-rsa": "^1.1.1",
