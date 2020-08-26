@@ -12,8 +12,7 @@ npm i node-wxpay3 --save
 此模块集成了付款码支付、jsapi、小程序支付、native、app、h5支付
 同时也包括了退款 订单查询等
 
-[查看详细使用](https://github.com/klover2/node-wxpay/blob/master/docs/pay.md)
-
+例子如下：
 ```bash
 const { WxPay } = require('node-wxpay3');
 const fs = require('fs');
@@ -41,13 +40,12 @@ const util = require('../utils/util');;
     console.log(result);
 })();
 ```
+[查看详细使用](https://github.com/klover2/node-wxpay/blob/master/docs/pay.md)
 
 2. 支付工具
-
 此模块集成了优惠券发放、红包、提现到零钱、提现到银行卡
 
-[查看详细使用](https://github.com/klover2/node-wxpay/blob/master/docs/withdraw.md)
-
+例子如下：
 ```bash
 const { WxWithdraw } = require('node-wxpay3');
 const fs = require('fs');
@@ -77,3 +75,4 @@ const wxwithdeaw = new WxWithdraw({
     console.log(result);
 })();
 ```
+[查看详细使用](https://github.com/klover2/node-wxpay/blob/master/docs/withdraw.md)
