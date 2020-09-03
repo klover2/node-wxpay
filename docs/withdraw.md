@@ -100,12 +100,12 @@ const options = {
 
 7. [企业付款到银行卡](https://pay.weixin.qq.com/wiki/doc/api/tools/mch_pay.php?chapter=24_2)
 ```bash
-const publicKey = fs.readFileSync('./public.pem').toString(); // 需要先调用第8条把公钥下载到本地
+const publicKey = fs.readFileSync('./public.pem').toString('ascii'); // 需要先调用第8条把公钥下载到本地
         const options = {
             'mch_id': '商户id',
             'partner_trade_no': util.getNonceStr(),
-            'enc_bank_no': wxwithdeaw.verifySign(publicKey, '383939310301023003183813910'),
-            'enc_true_name': wxwithdeaw.verifySign(publicKey, 'klover'),
+            'enc_bank_no': wxwithdeaw.publicEncrypt(publicKey, '383939310301023003183813910'),
+            'enc_true_name': wxwithdeaw.publicEncrypt(publicKey, 'klover'),
             'bank_code': '1003',
             'amount': 1,
             'desc': '提现到银行卡测试',
