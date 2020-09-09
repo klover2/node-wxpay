@@ -2,7 +2,6 @@
 const xml2js = require('xml2js');
 
 module.exports = () => {
-    // 用户token验证
     return async (ctx, next) => {
         let paramsJson = null;
         let contentType = ctx.headers['content-type'] || 'application/json';
