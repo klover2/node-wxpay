@@ -12,13 +12,13 @@ module.exports = () => {
             ctx.req.on('data', function(chunk) {
                 data += chunk;
             });
-            if (data) {
-                const getxml = await new Promise(function(resolve) {
+            
+            const getxml = await new Promise(function(resolve) {
                     ctx.req.on('end', function() {
                         resolve(data);
                     });
                 });
-                const parseObj = await new Promise(function(resolve) {
+            const parseObj = await new Promise(function(resolve) {
                     xml2js.parseString(getxml, {
                         'explicitArray': false,
                     }, function(err, json) {
@@ -26,11 +26,8 @@ module.exports = () => {
                         return resolve(json);
                     });
                 });
-                if (parseObj.xml) delete parseObj.xml._;
-                paramsJson = parseObj.xml;
-            } else {
-                throw new Error('没有获取到数据')
-            }
+            if (parseObj.xml) delete parseObj.xml._;
+            paramsJson = parseObj.xml;
             
         }
         ctx.request.body = paramsJson;

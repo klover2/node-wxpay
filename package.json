@@ -1,6 +1,6 @@
 {
   "name": "node-wxpay3",
-  "version": "1.1.0",
+  "version": "1.1.2",
   "description": "微信支付、提现、优惠券、红包等",
   "main": "index.js",
   "scripts": {
