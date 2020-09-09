@@ -5,7 +5,7 @@
 ```bash
 // 只支持MD5加密
 const options = {
-            'mch_billno': util.getNonceStr(),
+            'mch_billno': '',
             'mch_id': '商户id',
             'wxappid': 'appid',
             'send_name': '发送红包测试',
@@ -25,7 +25,7 @@ const options = {
 ```bash
 // 只支持MD5加密
  const options = {
-            'mch_billno': util.getNonceStr(),
+            'mch_billno': '',
             'mch_id': '商户id',
             'wxappid': 'appid',
             'send_name': '发送红包测试',
@@ -56,7 +56,7 @@ const options = {
 4. [发放小程序红包](https://pay.weixin.qq.com/wiki/doc/api/tools/cash_coupon.php?chapter=18_2&index=3)
 ```bash
   const options = {
-            'mch_billno': util.getNonceStr(),
+            'mch_billno': '',
             'mch_id': '商户id',
             'wxappid': 'appid',
             'send_name': '发送红包测试',
@@ -78,7 +78,7 @@ const options = {
  const options = {
             'mch_appid': 'appid',
             'mchid': '商户id',
-            'partner_trade_no': util.getNonceStr(),
+            'partner_trade_no': '',
             'openid': 'openid',
             'check_name': 'NO_CHECK',
             'amount': 1,
@@ -103,7 +103,7 @@ const options = {
 const publicKey = fs.readFileSync('./public.pem').toString('ascii'); // 需要先调用第8条把公钥下载到本地
         const options = {
             'mch_id': '商户id',
-            'partner_trade_no': util.getNonceStr(),
+            'partner_trade_no': '',
             'enc_bank_no': wxwithdeaw.publicEncrypt(publicKey, '383939310301023003183813910'),
             'enc_true_name': wxwithdeaw.publicEncrypt(publicKey, 'klover'),
             'bank_code': '1003',
@@ -142,7 +142,7 @@ let result = await wxwithdeaw.getpublickey({
 const result = await wxwithdeaw.send_coupon({
             'coupon_stock_id': '122',
             'openid_count': 1,
-            'partner_trade_no': util.getNonceStr(),
+            'partner_trade_no': '',
             'openid': 'openid',
             'appid': 'appid',
             'mch_id': '商户id',

@@ -6,7 +6,7 @@
 ```bash
   const options = {
             'body': 'app支付测试',
-            'out_trade_no': util.getNonceStr(),
+            'out_trade_no': '',
             'total_fee': 1,
             'spbill_create_ip': 'ip',
             'notify_url': '回调地址',
@@ -17,18 +17,6 @@
         let result = await wxpay.unifiedorder(options);
 返回：
   {
-    'req_data': { // req_data 是创建订单的参数， 用于回调检验 不要返给前端 自己保留
-        'nonce_str': '1111',
-        'body': 'app支付测试',
-        'out_trade_no': '36e306e2f2ca70196152',
-        'total_fee': 1,
-        'spbill_create_ip': 'ip',
-        'notify_url': '回调地址',
-        'trade_type': 'APP',
-        'appid': 'appid',
-        'mch_id': '商户id',
-        'sign_type': 'MD5',
-    },
     'appid': 'appid',
     'timestamp': '1597973115',
     'partnerid': '',
@@ -45,10 +33,20 @@
 ```bash
 通知url必须为直接可访问的url，不能携带参数。示例：notify_url：“https://pay.weixin.qq.com/wxpay/pay.action”
 
-由于微信返回是一段xml
-let json = wxapp.xmltojson(微信返回参数)
-let result = wxpay.callback_check(json.sign, req_data) // req_data 在创建统一接口中有返回
+由于微信返回是数据流 (本人用的是koa)
+在入口文件配置
+const bodyParser = require('koa-bodyparser');
+App.use(bodyParser());
+
+// 路由
+const { RefundMiddleware } = require('node-wxpay3')
+
+router.post('/refund', RefundMiddleware(), async ctx => {
+  console.log(ctx.request.body)
+
+  let result = wxpay.callback_check(ctx.request.body)
 ====》 result = true 则校验成功
+});
 
 ```
 
@@ -76,7 +74,7 @@ let result = await wxpay.orderquery({
 ```bash
  let result = await wxpay.refund({
             'out_trade_no': 'b2e19799f934259f68e5',
-            'out_refund_no': util.getNonceStr(),
+            'out_refund_no': '',
             'total_fee': 1,
             'refund_fee': 1,
         });
@@ -159,7 +157,7 @@ let result = await wxpay.report({
 ```bash
  const options = {
             'body': '付款码测试',
-            'out_trade_no': util.getNonceStr(),
+            'out_trade_no': '',
             'total_fee': 1,
             'spbill_create_ip': 'ip',
             'auth_code': '13412341234123412',
