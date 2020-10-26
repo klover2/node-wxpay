@@ -46,7 +46,7 @@ router.post('/refund', RefundMiddleware(), async ctx => {
 
   let result = wxpay.callback_check(ctx.request.body)
 ====》 result = true 则校验成功
-
+ctx.type = 'application/xml';
 ctx.body =
             `<xml>
                 <return_code><![CDATA[SUCCESS]]></return_code>
