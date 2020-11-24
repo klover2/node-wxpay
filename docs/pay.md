@@ -28,6 +28,15 @@
     'return_msg': 'OK',
     'result_code': 'SUCCESS',
 };
+
+
+#微信h5支付需要添加redirect_url（支付成功返回地址），scene_info需要使用 JSON.stringify({
+#     'h5_info': {
+#                 'type': 'Wap',
+#                 'wap_url': 'https://www.baidu.com',
+#                 'wap_name': '网址名称',
+#             },
+# })
 ```
 2. [回调验证](https://pay.weixin.qq.com/wiki/doc/api/jsapi.php?chapter=9_7&index=8)
 ```bash
