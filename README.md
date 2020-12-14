@@ -5,7 +5,7 @@
 ## 前言
 本模块集成了大部分微信支付、提现等模块的接口，采用async、await的方式调用，使用者不用在考虑参数加密发送，秘钥发送方式、xml怎么解析、json怎么转成xml等一系列麻烦事。 
 ## 安装
-npm i node-wxpay3 --save
+npm i node-wxpay3@1.1.4 --save(v1版本)
 
 ## 使用
 1. 支付产品 
